@@ -135,7 +135,6 @@ body{
   font-size:12px;
 }
 
-/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -225,6 +224,20 @@ body{
   color:#000;
 }
 
+.popup-title{
+  font-size:14px;
+  letter-spacing:3px;
+}
+
+.popup-link{
+  display:block;
+  padding-top:8px;
+  margin-top:8px;
+  font-size:13px;
+  text-decoration:none;
+  color:#102542;
+}
+
 /* BOTTOM BAR */
 .bottom-bar{
   position:fixed;
@@ -305,6 +318,16 @@ body{
   </div>
 </div>
 
+<!-- POPUP HTML -->
+<div id="popup" class="popup-overlay" onclick="closePopup()">
+  <div class="popup-box" onclick="event.stopPropagation()">
+    <div class="popup-title" id="popup-title"></div>
+    <a class="popup-link" id="popup-link-telegram" href="#"></a>
+    <a class="popup-link" id="popup-link-signal" href="#" style="display:none;"></a>
+  </div>
+</div>
+
+<!-- BOTTOM BAR -->
 <div class="bottom-bar">
   <a onclick="tg.openLink('https://t.me/Italianfarm1')">
     <svg viewBox="0 0 24 24"><path d="M22.5 3.5L2.8 10.9c-.9.3-.9 1.6.1 1.9l4.9 1.6 1.9 5.9c.3.9 1.5 1 2 .2l2.8-4.1 5.6 4.1c.8.6 2 .1 2.2-.9l3.4-15.3c.2-.9-.7-1.6-1.7-1.4z"/></svg>
@@ -319,7 +342,6 @@ body{
   </a>
 </div>
 
-<!-- JS IDENTICO AL TUO -->
 <script>
 const tg = window.Telegram.WebApp;
 tg.ready();
@@ -335,6 +357,32 @@ window.addEventListener("load",()=>{
     document.getElementById("loader").style.display="none";
   },3000);
 });
+
+const popup=document.getElementById("popup");
+const popupTitle=document.getElementById("popup-title");
+const popupTelegram=document.getElementById("popup-link-telegram");
+const popupSignal=document.getElementById("popup-link-signal");
+
+function openPopup(title,tgText,tgUrl,signalText,signalUrl){
+  popupTitle.innerText=title;
+  popupTelegram.innerText=tgText;
+  popupTelegram.onclick=()=>tg.openLink(tgUrl);
+  popupTelegram.style.display="block";
+
+  if(signalText && signalUrl){
+    popupSignal.innerText=signalText;
+    popupSignal.onclick=()=>tg.openLink(signalUrl);
+    popupSignal.style.display="block";
+  } else {
+    popupSignal.style.display="none";
+  }
+
+  popup.classList.add("show");
+}
+
+function closePopup(){
+  popup.classList.remove("show");
+}
 </script>
 
 </body>
