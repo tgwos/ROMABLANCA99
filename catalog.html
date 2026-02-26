@@ -28,15 +28,11 @@ body{
   overflow-x:hidden;
 }
 
-/* COLONNE */
-
-
-
-/* BACK BUTTON */
+/* BACK BUTTON FIX */
 .back{
   position:fixed;
   top:calc(14px + env(safe-area-inset-top));
-  left:70px;
+  left:16px;
   z-index:10;
   padding:10px 16px;
   border-radius:14px;
@@ -47,9 +43,12 @@ body{
   letter-spacing:2px;
 }
 
-/* CONTAINER */
+/* CONTAINER FIX MOBILE */
 .container{
-  padding:90px 70px 40px;
+  padding:90px 16px 40px;
+  width:100%;
+  max-width:500px;
+  margin:0 auto;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -89,14 +88,20 @@ body{
   border:5px double var(--gold);
 }
 
-/* GRID */
+/* GRID RESPONSIVE */
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:18px;
+  gap:14px;
 }
 
-/* ITEM STILE INDEX */
+@media (max-width:380px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* ITEM */
 .item{
   display:flex;
   flex-direction:column;
@@ -138,8 +143,6 @@ body{
 
 <body>
 
-
-
 <div class="back" onclick="goBack()">⬅ BACK</div>
 
 <div class="container">
@@ -176,6 +179,7 @@ body{
         </div>
         <div class="item-title">ERBA CALI USA</div>
       </div>
+
     </div>
   </div>
 </div>
