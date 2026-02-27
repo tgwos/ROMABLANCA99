@@ -1,1 +1,358 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>ROMA BLANCA93 – Stock</title>
 
+<script src="https://telegram.org/js/telegram-web-app.js?v=6"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap');
+
+:root{
+  --blue-dark:#0a1628;
+  --blue-deep:#0f223d;
+  --gold:#d4af37;
+  --gold-light:#f8e7a1;
+  --marble:#f5f2ea;
+}
+
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+body{
+  margin:0;
+  font-family:"Cinzel", serif;
+  background:linear-gradient(rgba(10,22,40,.97),rgba(10,22,40,.99));
+  color:var(--gold-light);
+}
+
+/* BACK */
+.back{
+  position:fixed;
+  top:calc(12px + env(safe-area-inset-top));
+  left:12px;
+  z-index:4000;
+  padding:10px 16px;
+  border-radius:16px;
+  background:var(--blue-deep);
+  border:3px double var(--gold);
+  color:var(--gold-light);
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+/* CONTAINER */
+.app{
+  padding:80px 16px 40px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* GRID */
+.products{
+  width:100%;
+  max-width:420px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+/* PRODUCT */
+.product{
+  height:200px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.product:active{
+  transform:scale(.95);
+}
+
+/* CARD */
+.product-card{
+  flex:1;
+  border-radius:22px;
+  background:var(--marble);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border:4px double var(--gold);
+  box-shadow:0 0 15px rgba(212,175,55,.25);
+}
+
+.product-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* NAME */
+.name{
+  height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 8px;
+  border-radius:14px;
+  background:var(--gold);
+  color:#000;
+  font-weight:900;
+  text-align:center;
+  font-size:clamp(9px,3.5vw,12px);
+  letter-spacing:1px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(10,22,40,.98);
+  display:none;
+  flex-direction:column;
+  z-index:2000;
+}
+
+/* MEDIA */
+.media-box{
+  width:100%;
+  max-width:420px;
+  margin:20px auto 0;
+  position:relative;
+}
+
+.media-box video,
+.media-box img{
+  width:100%;
+  max-height:50vh;
+  object-fit:contain;
+}
+
+/* ARROWS */
+.nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:54px;
+  height:54px;
+  background:var(--blue-deep);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  font-weight:900;
+  cursor:pointer;
+  user-select:none;
+  color:var(--gold-light);
+  border:3px double var(--gold);
+  box-shadow:0 0 12px rgba(212,175,55,.4);
+}
+
+.nav.left{ left:10px; }
+.nav.right{ right:10px; }
+
+/* PRICES */
+.prices{
+  width:100%;
+  max-width:420px;
+  margin:18px auto 0;
+  padding:16px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:12px;
+  max-height:30vh;
+  overflow-y:auto;
+}
+
+.price{
+  background:var(--blue-deep);
+  border-radius:16px;
+  padding:14px;
+  text-align:center;
+  font-weight:800;
+  border:3px double var(--gold);
+  box-shadow:0 0 12px rgba(212,175,55,.25);
+}
+
+/* CONTACT */
+.contact{
+  position:sticky;
+  bottom:0;
+  width:100%;
+  max-width:420px;
+  margin:0 auto;
+  padding:18px;
+  background:var(--gold);
+  color:#000;
+  border-radius:20px 20px 0 0;
+  font-weight:900;
+  text-align:center;
+  cursor:pointer;
+  letter-spacing:2px;
+}
+</style>
+</head>
+
+<body>
+<div class="back" id="backBtn">←</div>
+
+<div class="app">
+  <div class="products" id="products"></div>
+</div>
+
+<div class="modal" id="modal">
+  <div class="media-box">
+    <div class="nav left" id="prev">‹</div>
+    <div class="nav right" id="next">›</div>
+    <div id="mediaContainer"></div>
+  </div>
+  <div class="prices" id="prices"></div>
+  <div class="contact" id="contactBtn">💬 CONTATTA</div>
+</div>
+
+<script>
+const tg = window.Telegram.WebApp;
+tg.ready();
+tg.expand();
+
+const CATEGORY = "stock2";
+const CONTACT = "Italianfarm1";
+
+let products = [];
+let product = null;
+let mediaIndex = 0;
+let currentVideo = null;
+
+fetch("products.json?v=" + Date.now())
+.then(r => r.json())
+.then(j => {
+  products = j.filter(p => p.category === CATEGORY);
+  render();
+});
+
+function render(){
+  const box = document.getElementById("products");
+  box.innerHTML = "";
+  products.forEach(p => {
+    const d = document.createElement("div");
+    d.className = "product";
+    d.innerHTML =
+      '<div class="product-card"><img loading="lazy" src="' + p.previewImage + '"></div>' +
+      '<div class="name">' + p.name + '</div>';
+    d.onclick = () => openModal(p);
+    box.appendChild(d);
+  });
+}
+
+function openModal(p){
+  product = p;
+  mediaIndex = 0;
+  document.getElementById("modal").style.display = "flex";
+  loadMedia();
+  loadPrices();
+  tg.BackButton.show();
+}
+
+function stopCurrentVideo(){
+  if(currentVideo){
+    currentVideo.pause();
+    currentVideo.currentTime = 0;
+    currentVideo = null;
+  }
+}
+
+function preloadNext(){
+  if(!product || !product.media) return;
+  const nextIndex = (mediaIndex + 1) % product.media.length;
+  const next = product.media[nextIndex];
+  if(next.type === "image"){
+    const img = new Image();
+    img.src = next.src;
+  }
+}
+
+function loadMedia(){
+  stopCurrentVideo();
+  const box = document.getElementById("mediaContainer");
+  box.innerHTML = "";
+  if(!product.media) return;
+
+  const m = product.media[mediaIndex];
+
+  if(m.type === "video"){
+    const v = document.createElement("video");
+    v.src = m.src;
+    v.controls = true;
+    v.playsInline = true;
+    box.appendChild(v);
+    currentVideo = v;
+    v.play().catch(()=>{});
+  } else {
+    const img = document.createElement("img");
+    img.src = m.src;
+    img.loading = "lazy";
+    box.appendChild(img);
+  }
+
+  preloadNext();
+}
+
+document.getElementById("next").onclick = () => {
+  mediaIndex = (mediaIndex + 1) % product.media.length;
+  loadMedia();
+};
+
+document.getElementById("prev").onclick = () => {
+  mediaIndex = (mediaIndex - 1 + product.media.length) % product.media.length;
+  loadMedia();
+};
+
+function loadPrices(){
+  const box = document.getElementById("prices");
+  box.innerHTML = "";
+  product.prices.forEach(p => {
+    const d = document.createElement("div");
+    d.className = "price";
+    d.innerHTML = p.quantity + " g<br><strong>€" + p.price + "</strong>";
+    box.appendChild(d);
+  });
+}
+
+document.getElementById("contactBtn").onclick = () => {
+  const msg = encodeURIComponent("Ciao, sono interessato al prodotto: " + product.name);
+  window.open("https://t.me/" + CONTACT + "?text=" + msg, "_blank");
+};
+
+function closeModal(){
+  stopCurrentVideo();
+  document.getElementById("modal").style.display = "none";
+  document.getElementById("mediaContainer").innerHTML = "";
+  tg.BackButton.hide();
+}
+
+document.getElementById("backBtn").onclick = () => {
+  document.getElementById("modal").style.display === "flex"
+    ? closeModal()
+    : location.href = "catalog.html";
+};
+
+tg.BackButton.onClick(() => {
+  document.getElementById("modal").style.display === "flex"
+    ? closeModal()
+    : location.href = "catalog.html";
+});
+</script>
+</body>
+</html>
