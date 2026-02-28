@@ -1,1 +1,223 @@
+[
+  {
+    "id": 1,
+    "name": "COCA",
+    "category": "stock1",
+    "previewImage": "https://res.cloudinary.com/dbyvkhuds/image/upload/v1772272718/1_vo52gv.jpg",
+    "media": [
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dbyvkhuds/image/upload/v1772272718/1_vo52gv.jpg"
+      },
+      {
+        "type": "video",
+        "src": "https://res.cloudinary.com/dbyvkhuds/video/upload/v1772272723/2_ihfu8l.mp4"
+      }
+    ],
+    "prices": [
+      { "quantity": 10, "price": 300 },
+      { "quantity": 20, "price": 550 },
+      { "quantity": 50, "price": 1200 },
+      { "quantity": 100, "price": 2300 },
+      { "quantity": 500, "price": 9750 },
+      { "quantity": 1000, "price": 19000 }
+    ]
+  },
 
+  {
+    "id": 2,
+    "name": "PLASMA STATIC",
+    "category": "stock1",
+    "previewImage": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771425421/5814528362167340382_uffzol.jpg",
+    "media": [
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771425421/5814528362167340382_uffzol.jpg"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771331515/2.2_jdxubz.png"
+      },
+      {
+        "type": "video",
+        "src": "https://res.cloudinary.com/dizbl4jib/video/upload/v1771331407/2_cbucpa.mp4"
+      },
+      {
+        "type": "video",
+        "src": "https://res.cloudinary.com/dizbl4jib/video/upload/v1771331511/2.1_vtumpl.mp4"
+      }
+    ],
+    "prices": [
+      { "quantity": 2, "price": 50 },
+      { "quantity": 5, "price": 100 },
+      { "quantity": 10, "price": 190 },
+      { "quantity": 25, "price": 400 },
+      { "quantity": 50, "price": 750 },
+      { "quantity": 100, "price": 1450 }
+    ]
+  },
+
+  {
+    "id": 3,
+    "name": "FROZEN PREMIUM",
+    "category": "stock1",
+    "previewImage": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771332084/3.2_ntmqri.png",
+    "media": [
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771425539/5814528362167340383_1_henqew.jpg"
+      },
+      {
+        "type": "video",
+        "src": "https://res.cloudinary.com/dizbl4jib/video/upload/v1771332166/3_lpncrk.mp4"
+      },
+      {
+        "type": "video",
+        "src": "https://res.cloudinary.com/dizbl4jib/video/upload/v1771332313/3.1_uriiox.mp4"
+      }
+    ],
+    "prices": [
+      { "quantity": 2, "price": 50 },
+      { "quantity": 5, "price": 90 },
+      { "quantity": 10, "price": 190 },
+      { "quantity": 25, "price": 400 },
+      { "quantity": 50, "price": 750 },
+      { "quantity": 100, "price": 1350 }
+    ]
+  },
+
+  {
+    "id": 4,
+    "name": "DRY VARIE FARM",
+    "category": "stock2",
+    "previewImage": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771419394/4_opsaax.jpg",
+    "media": [
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771419436/4.2_bnqhlz.jpg"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771419394/4_opsaax.jpg"
+      },
+      {
+        "type": "video",
+        "src": "https://res.cloudinary.com/dizbl4jib/video/upload/v1771419433/4.1_s8uco3.mp4"
+      }
+    ],
+    "prices": [
+      { "quantity": 5, "price": 30 },
+      { "quantity": 10, "price": 50 },
+      { "quantity": 15, "price": 70 },
+      { "quantity": 25, "price": 100 },
+      { "quantity": 100, "price": 350 },
+      { "quantity": 500, "price": 1400 },
+      { "quantity": 1000, "price": 2700 }
+    ]
+  },
+   {
+    "id": 4,
+    "name": "TUSSI B",
+    "category": "stock5",
+    "previewImage": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771421687/Cattura_yfup8j.png",
+    "media": [
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771421687/Cattura_yfup8j.png"
+      },
+      {
+        "type": "video",
+        "src": "https://res.cloudinary.com/dizbl4jib/video/upload/v1771421584/IMG_3179_qata5c.mp4"
+      }
+    ],
+    "prices": [
+      { "quantity": 1, "price": 50 },
+      { "quantity": 2, "price": 90 },
+      { "quantity": 3, "price": 120 },
+      { "quantity": 5, "price": 170 },
+      { "quantity": 10, "price": 300 },
+      { "quantity": 25, "price": 600 },
+      { "quantity": 50, "price": 1000 }
+    ]
+  },
+   {
+    "id": 4,
+    "name": " KARLL",
+    "category": "stock4",
+    "previewImage": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771422097/6.1_eizc1s.jpg",
+    "media": [
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771422097/6.1_eizc1s.jpg"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771422138/6_iirkx4.jpg"
+      },
+      {
+        "type": "video",
+        "src": "https://res.cloudinary.com/dizbl4jib/video/upload/v1771422214/6.2_cfpf6u.mp4"
+      },
+      {
+        "type": "video",
+        "src": "https://res.cloudinary.com/dizbl4jib/video/upload/v1771422256/6.3_q9vsow.mp4"
+      }
+    ],
+    "prices": [
+      { "quantity": 1, "price": 50 },
+      { "quantity": 2, "price": 90 },
+      { "quantity": 3, "price": 120 },
+      { "quantity": 5, "price": 170 },
+      { "quantity": 10, "price": 300 },
+      { "quantity": 50, "price": 1250 },
+      { "quantity": 100, "price": 2200 }
+    ]
+  },
+   {
+    "id": 4,
+    "name": "STATIC MOUNTAIN TERPS",
+    "category": "stock3",
+    "previewImage": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771423943/7_ww46kc.jpg",
+    "media": [
+     
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771423943/7_ww46kc.jpg"
+      }, 
+      {
+        "type": "video",
+        "src": "https://res.cloudinary.com/dizbl4jib/video/upload/v1771423970/7.1_hbadr0.mp4"
+      }
+    ],
+    "prices": [
+      { "quantity": 50, "price": 380 },
+      { "quantity": 100, "price": 700 }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "MIX SELECTION",
+    "category": "stock6",
+    "previewImage": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771425738/5814528362167340381_r5edwj.jpg",
+    "media": [
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771425738/5814528362167340381_r5edwj.jpg"
+      },
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771331515/2.2_jdxubz.png"
+      }, 
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771425539/5814528362167340383_1_henqew.jpg"
+      }
+    ],
+    "prices": [
+      { "quantity": 25, "price": 350 },
+      { "quantity": 50, "price": 650 },
+      { "quantity": 100, "price": 1200 }
+    ]
+  }
+  
+]
