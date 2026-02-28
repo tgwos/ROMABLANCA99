@@ -268,12 +268,18 @@ body{
       </div>
 
       <div class="small-wrapper"
-        onclick="openPopup('CONTACT','📨 Telegram:@ragacaroquintero93','https://t.me/ragacaroquintero931',,'📨 Telegram:@arellanofelix93','https://t.me/arellanofelix93''📞 Signal','https://signal.me/#eu/lfrpkpj9BrTOhFWbb0--THMOz_7GZBbUpTA2Fa7BBO_RWUOEM6ZLOJAsJmZso-MD')">
-        <div class="card-small">
-          <img src="https://tgwos.github.io/ROMABLANCA99/foto1.jpg">
-        </div>
-        <div class="small-label">CONTACTS</div>
-      </div>
+onclick="openPopup(
+  'CONTACT',
+  '📨 Telegram:@ragacaroquintero93',
+  'https://t.me/ragacaroquintero931',
+  '📞 Signal',
+  'https://signal.me/#eu/lfrpkpj9BrTOhFWbb0--THMOz_7GZBbUpTA2Fa7BBO_RWUOEM6ZLOJAsJmZso-MD'
+)">
+  <div class="card-small">
+    <img src="https://tgwos.github.io/ROMABLANCA99/foto1.jpg">
+  </div>
+  <div class="small-label">CONTACTS</div>
+</div>
 
       <div class="small-wrapper"
         onclick="openPopup('CHANNEL','📢 Telegram:ROMA BLANCA 93','https://t.me/+m3wfL3o3jQ4xZTY0')">
@@ -340,48 +346,59 @@ body{
 
 </div>
 <script>
-const tg = window.Telegram.WebApp;
-tg.ready();
-tg.expand();
+document.addEventListener("DOMContentLoaded", function () {
 
+  // Telegram WebApp
+  const tg = window.Telegram.WebApp;
+  tg.ready();
+  tg.expand();
 
-</script>
+  // Loader
+  window.addEventListener("load", function () {
+    setTimeout(function () {
+      const loader = document.getElementById("loader");
+      if (loader) {
+        loader.style.display = "none";
+      }
+    }, 2000); // tempo loader
+  });
 
-<script>
-const tg = window.Telegram.WebApp;
-tg.ready();
-tg.expand();
-  window.addEventListener("load",()=>{
-  setTimeout(()=>{
-    document.getElementById("loader").style.display="none";
-  },2000); // tempo loader
+  // Popup Elements
+  const popup = document.getElementById("popup");
+  const popupTitle = document.getElementById("popup-title");
+  const popupTelegram = document.getElementById("popup-link-telegram");
+  const popupSignal = document.getElementById("popup-link-signal");
+
+  // Open Popup
+  window.openPopup = function (title, tgText, tgUrl, signalText, signalUrl) {
+
+    popupTitle.innerText = title;
+
+    popupTelegram.innerText = tgText;
+    popupTelegram.onclick = function () {
+      tg.openLink(tgUrl);
+    };
+    popupTelegram.style.display = "block";
+
+    if (signalText && signalUrl) {
+      popupSignal.innerText = signalText;
+      popupSignal.onclick = function () {
+        tg.openLink(signalUrl);
+      };
+      popupSignal.style.display = "block";
+    } else {
+      popupSignal.style.display = "none";
+    }
+
+    popup.classList.add("show");
+  };
+
+  // Close Popup
+  window.closePopup = function () {
+    popup.classList.remove("show");
+  };
+
 });
-
-const popup=document.getElementById("popup");
-const popupTitle=document.getElementById("popup-title");
-const popupTelegram=document.getElementById("popup-link-telegram");
-const popupSignal=document.getElementById("popup-link-signal");
-
-function openPopup(title,tgText,tgUrl,signalText,signalUrl){
-  popupTitle.innerText=title;
-  popupTelegram.innerText=tgText;
-  popupTelegram.onclick=()=>tg.openLink(tgUrl);
-  popupTelegram.style.display="block";
-
-  if(signalText && signalUrl){
-    popupSignal.innerText=signalText;
-    popupSignal.onclick=()=>tg.openLink(signalUrl);
-    popupSignal.style.display="block";
-  } else {
-    popupSignal.style.display="none";
-  }
-
-  popup.classList.add("show");
-}
-
-function closePopup(){
-  popup.classList.remove("show");
-}
 </script>
 
 </body>
