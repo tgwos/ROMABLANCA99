@@ -98,7 +98,7 @@ const gallery = document.getElementById("gallery");
 const viewer = document.getElementById("viewer");
 const viewerImg = document.getElementById("viewer-img");
 
-fetch("recensioni.json")
+fetch("foto.json")
   .then(res => res.json())
   .then(data => {
     data.forEach(item => {
