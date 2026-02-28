@@ -267,18 +267,15 @@ body{
         <span>CATALOGO</span>
       </div>
 
-      <div class="small-wrapper"
-onclick="openPopup(
-  'CONTACT',
-  '📨 Telegram:@ragacaroquintero93',
-  'https://t.me/ragacaroquintero931',
-  '📞 Signal',
-  'https://signal.me/#eu/lfrpkpj9BrTOhFWbb0--THMOz_7GZBbUpTA2Fa7BBO_RWUOEM6ZLOJAsJmZso-MD'
-)">
+     <div class="small-wrapper"
+onclick="openPopup('CONTACTS','📨 Telegram','https://t.me/ragacaroquintero931','📞 Signal','https://signal.me/#eu/lfrpkpj9BrTOhFWbb0--THMOz_7GZBbUpTA2Fa7BBO_RWUOEM6ZLOJAsJmZso-MD','📷 Instagram','https://www.instagram.com/romablanca.93')">
+
   <div class="card-small">
     <img src="https://tgwos.github.io/ROMABLANCA99/foto1.jpg">
   </div>
+
   <div class="small-label">CONTACTS</div>
+
 </div>
 
       <div class="small-wrapper"
@@ -312,8 +309,9 @@ onclick="openPopup(
 <div id="popup" class="popup-overlay" onclick="closePopup()">
   <div class="popup-box" onclick="event.stopPropagation()">
     <div class="popup-title" id="popup-title"></div>
-    <a class="popup-link" id="popup-link-telegram"></a>
-    <a class="popup-link" id="popup-link-signal" style="display:none;"></a>
+    <a class="popup-link" id="popup-link-1"></a>
+<a class="popup-link" id="popup-link-2" style="display:none;"></a>
+<a class="popup-link" id="popup-link-3" style="display:none;"></a>
   </div>
 </div>
 
@@ -372,35 +370,39 @@ document.addEventListener("DOMContentLoaded", function () {
   const popupSignal = document.getElementById("popup-link-signal");
 
   // Open Popup
-  window.openPopup = function (title, tgText, tgUrl, signalText, signalUrl) {
+ window.openPopup = function (title, text1, url1, text2, url2, text3, url3) {
 
-    popupTitle.innerText = title;
+  popupTitle.innerText = title;
 
-    popupTelegram.innerText = tgText;
-    popupTelegram.onclick = function () {
-      tg.openLink(tgUrl);
-    };
-    popupTelegram.style.display = "block";
+  const link1 = document.getElementById("popup-link-1");
+  const link2 = document.getElementById("popup-link-2");
+  const link3 = document.getElementById("popup-link-3");
 
-    if (signalText && signalUrl) {
-      popupSignal.innerText = signalText;
-      popupSignal.onclick = function () {
-        tg.openLink(signalUrl);
-      };
-      popupSignal.style.display = "block";
-    } else {
-      popupSignal.style.display = "none";
-    }
+  // Reset
+  link1.style.display = "none";
+  link2.style.display = "none";
+  link3.style.display = "none";
 
-    popup.classList.add("show");
-  };
+  if (text1 && url1) {
+    link1.innerText = text1;
+    link1.onclick = () => window.open(url1, "_blank");
+    link1.style.display = "block";
+  }
 
-  // Close Popup
-  window.closePopup = function () {
-    popup.classList.remove("show");
-  };
+  if (text2 && url2) {
+    link2.innerText = text2;
+    link2.onclick = () => window.open(url2, "_blank");
+    link2.style.display = "block";
+  }
 
-});
+  if (text3 && url3) {
+    link3.innerText = text3;
+    link3.onclick = () => window.open(url3, "_blank");
+    link3.style.display = "block";
+  }
+
+  popup.classList.add("show");
+};
 </script>
 
 </body>
