@@ -217,18 +217,6 @@ body{
   overflow:hidden;
 }
 
-.door{
-  position:absolute;
-  top:0;
-  bottom:0;
-  width:50%;
-  background:linear-gradient(to right,#3a2a15,#5a3d1f,#3a2a15);
-  transition:transform 2.5s ease-in-out;
-  z-index:2;
-}
-
-
-
 .loader-content{
   position:relative;
   z-index:1;
@@ -256,8 +244,6 @@ body{
 <body>
 <!-- LOADER -->
 <div id="loader">
-  <div class="door left"></div>
-  <div class="door right"></div>
   <div class="loader-content">
     <video class="loader-video" autoplay muted loop playsinline>
       <source src="https://tgwos.github.io/ROMABLANCA99/video1.MP4" type="video/mp4">
@@ -358,22 +344,18 @@ const tg = window.Telegram.WebApp;
 tg.ready();
 tg.expand();
 
-window.addEventListener("load",()=>{
-  setTimeout(()=>{
-    document.querySelector(".door.left").style.transform="translateX(-100%)";
-    document.querySelector(".door.right").style.transform="translateX(100%)";
-  },300);
 
-  setTimeout(()=>{
-    document.getElementById("loader").style.display="none";
-  },3000);
-});
 </script>
 
 <script>
 const tg = window.Telegram.WebApp;
 tg.ready();
 tg.expand();
+  window.addEventListener("load",()=>{
+  setTimeout(()=>{
+    document.getElementById("loader").style.display="none";
+  },2000); // tempo loader
+});
 
 const popup=document.getElementById("popup");
 const popupTitle=document.getElementById("popup-title");
