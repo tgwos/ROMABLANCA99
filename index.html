@@ -352,9 +352,11 @@ onclick="openPopup('CONTACTS','📨 Telegram','https://t.me/ragacaroquintero931'
 document.addEventListener("DOMContentLoaded", function () {
 
   // Telegram WebApp
-  const tg = window.Telegram.WebApp;
-  tg.ready();
-  tg.expand();
+  if (window.Telegram && window.Telegram.WebApp) {
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+    tg.expand();
+  }
 
   // Loader
   window.addEventListener("load", function () {
@@ -363,49 +365,50 @@ document.addEventListener("DOMContentLoaded", function () {
       if (loader) {
         loader.style.display = "none";
       }
-    }, 2000); // tempo loader
+    }, 2000);
   });
 
-  // Popup Elements
   const popup = document.getElementById("popup");
   const popupTitle = document.getElementById("popup-title");
-  const popupTelegram = document.getElementById("popup-link-telegram");
-  const popupSignal = document.getElementById("popup-link-signal");
 
-  // Open Popup
- window.openPopup = function (title, text1, url1, text2, url2, text3, url3) {
+  window.openPopup = function (title, text1, url1, text2, url2, text3, url3) {
 
-  popupTitle.innerText = title;
+    popupTitle.innerText = title;
 
-  const link1 = document.getElementById("popup-link-1");
-  const link2 = document.getElementById("popup-link-2");
-  const link3 = document.getElementById("popup-link-3");
+    const link1 = document.getElementById("popup-link-1");
+    const link2 = document.getElementById("popup-link-2");
+    const link3 = document.getElementById("popup-link-3");
 
-  // Reset
-  link1.style.display = "none";
-  link2.style.display = "none";
-  link3.style.display = "none";
+    link1.style.display = "none";
+    link2.style.display = "none";
+    link3.style.display = "none";
 
-  if (text1 && url1) {
-    link1.innerText = text1;
-    link1.onclick = () => window.open(url1, "_blank");
-    link1.style.display = "block";
-  }
+    if (text1 && url1) {
+      link1.innerText = text1;
+      link1.onclick = () => window.open(url1, "_blank");
+      link1.style.display = "block";
+    }
 
-  if (text2 && url2) {
-    link2.innerText = text2;
-    link2.onclick = () => window.open(url2, "_blank");
-    link2.style.display = "block";
-  }
+    if (text2 && url2) {
+      link2.innerText = text2;
+      link2.onclick = () => window.open(url2, "_blank");
+      link2.style.display = "block";
+    }
 
-  if (text3 && url3) {
-    link3.innerText = text3;
-    link3.onclick = () => window.open(url3, "_blank");
-    link3.style.display = "block";
-  }
+    if (text3 && url3) {
+      link3.innerText = text3;
+      link3.onclick = () => window.open(url3, "_blank");
+      link3.style.display = "block";
+    }
 
-  popup.classList.add("show");
-};
+    popup.classList.add("show");
+  };
+
+  window.closePopup = function () {
+    popup.classList.remove("show");
+  };
+
+});
 </script>
 
 </body>
