@@ -1,1 +1,11 @@
-
+[
+  {
+    "img": "https://tuosito.it/reviews/review1.jpg"
+  },
+  {
+    "img": "https://tuosito.it/reviews/review2.jpg"
+  },
+  {
+    "img": "https://tuosito.it/reviews/review3.jpg"
+  }
+]
