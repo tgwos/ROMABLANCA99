@@ -1,1 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RECENSIONI</title>
 
+<style>
+:root{
+  --blue-dark:#0a1628;
+  --blue-deep:#0f223d;
+  --gold:#d4af37;
+  --gold-light:#f8e7a1;
+  --marble:#f5f2ea;
+}
+
+body{
+  margin:0;
+  font-family:"Cinzel", serif;
+  background:linear-gradient(rgba(10,22,40,.97),rgba(10,22,40,.99));
+  color:var(--gold-light);
+}
+
+.header{
+  text-align:center;
+  padding:25px;
+  font-size:22px;
+  letter-spacing:4px;
+}
+
+.gallery{
+  max-width:500px;
+  margin:0 auto;
+  padding:10px 15px 80px;
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+}
+
+.review-card{
+  background:var(--blue-deep);
+  border:4px double var(--gold);
+  border-radius:20px;
+  padding:12px;
+  box-shadow:0 0 20px rgba(212,175,55,.4);
+  cursor:pointer;
+  transition:.3s;
+}
+
+.review-card:hover{
+  transform:scale(1.02);
+}
+
+.review-card img{
+  width:100%;
+  border-radius:15px;
+  display:block;
+}
+
+/* FULLSCREEN VIEW */
+.viewer{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.95);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+
+.viewer img{
+  max-width:95%;
+  max-height:90%;
+  border:5px double var(--gold);
+  border-radius:15px;
+}
+
+.viewer.show{
+  display:flex;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  RECENSIONI CLIENTI
+</div>
+
+<div class="gallery" id="gallery"></div>
+
+<div class="viewer" id="viewer" onclick="closeViewer()">
+  <img id="viewer-img">
+</div>
+
+<script>
+const gallery = document.getElementById("gallery");
+const viewer = document.getElementById("viewer");
+const viewerImg = document.getElementById("viewer-img");
+
+fetch("recensioni.json")
+  .then(res => res.json())
+  .then(data => {
+    data.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "review-card";
+
+      const img = document.createElement("img");
+      img.src = item.img;
+
+      card.appendChild(img);
+      card.onclick = () => openViewer(item.img);
+
+      gallery.appendChild(card);
+    });
+  });
+
+function openViewer(src){
+  viewerImg.src = src;
+  viewer.classList.add("show");
+}
+
+function closeViewer(){
+  viewer.classList.remove("show");
+}
+</script>
+
+</body>
+</html>
