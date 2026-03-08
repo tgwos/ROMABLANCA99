@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "COCA",
+    "name": "ESCLUSIVA",
     "category": "stock1",
     "previewImage": "https://res.cloudinary.com/dbyvkhuds/image/upload/v1772272718/1_vo52gv.jpg",
     "media": [
@@ -191,6 +191,32 @@
       { "quantity": 25, "price": 350 },
       { "quantity": 50, "price": 650 },
       { "quantity": 100, "price": 1200 }
+    ]
+  },
+  {
+    "id": 1,
+    "name": "TOP",
+    "category": "stock1",
+    "previewImage": "https://res.cloudinary.com/dbyvkhuds/image/upload/v1772974222/5866467307188587913_zz6iog.jpg",
+    "media": [
+      {
+        "type": "image",
+        "src": "https://res.cloudinary.com/dbyvkhuds/image/upload/v1772974222/5866467307188587913_zz6iog.jpg"
+      },
+      {
+        "type": "video",
+        "src": "https://res.cloudinary.com/dbyvkhuds/video/upload/v1772974344/IMG_0050_beg1fr.mp4"
+      },
+      {
+        "type": "video",
+        "src": "https://res.cloudinary.com/dbyvkhuds/video/upload/v1772974401/IMG_0094_d8gdh9.mp4"
+      }
+    ],
+    "prices": [
+      { "quantity": 50, "price": 1150 },
+      { "quantity": 100, "price": 2200 },
+      { "quantity": 500, "price": 9500 },
+      { "quantity": 1000, "price": 18500 }
     ]
   }
   
