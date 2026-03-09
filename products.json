@@ -90,6 +90,14 @@
     "media": [
       {
         "type": "image",
+        "src": "https://ik.imagekit.io/lao1bkp97/New%20Folder/1.jpg"
+      },
+      {
+        "type": "image",
+        "src": "https://ik.imagekit.io/lao1bkp97/New%20Folder/4.jpg"
+      },
+      {
+        "type": "image",
         "src": "https://res.cloudinary.com/dbyvkhuds/image/upload/v1772273967/1_ub4xsc.jpg"
       },
       {
@@ -98,11 +106,19 @@
       },
       {
         "type": "video",
+        "src": "https://ik.imagekit.io/lao1bkp97/New%20Folder/3%20-%20Trim.mp4"
+      },
+      {
+        "type": "video",
+        "src": "https://ik.imagekit.io/lao1bkp97/New%20Folder/2%20-%20Trim.mp4"
+      }
+      {
+        "type": "video",
         "src": "https://res.cloudinary.com/dbyvkhuds/video/upload/v1772273980/3_mcqkaa.mp4"
       },
       {
         "type": "video",
-        "src": "https://res.cloudinary.com/dbyvkhuds/video/upload/v1772274012/4_mghfqp.mp4"
+        "src": "https://res.cloudinary.com/dbyvkhuds/video/upload/v1772273980/3_mcqkaa.mp4"
       }
     ],
     "prices": [
