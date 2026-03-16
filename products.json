@@ -75,11 +75,11 @@
     "prices": [
       { "quantity": 25, "price": 140 },
       { "quantity": 50, "price": 200 },
-      { "quantity": 100, "price": 370 },
+      { "quantity": 100, "price": 360 },
       { "quantity": 200, "price": 680 },
-      { "quantity": 300, "price": 960 },
+      { "quantity": 300, "price": 940 },
       { "quantity": 500, "price": 1450 },
-      { "quantity": 1000, "price": 2700 }
+      { "quantity": 1000, "price": 2650 }
     ]
   },
    {
