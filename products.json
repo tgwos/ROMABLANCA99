@@ -40,7 +40,11 @@
       },
       {
         "type": "video",
-        "src": "https://res.cloudinary.com/dbyvkhuds/video/upload/v1772273648/2_b3daic.mp4"
+        "src": "https://res.cloudinary.com/dbtvcirbp/video/upload/v1773677514/FROZEN_1_ucgf94.mp4"
+      },
+       {
+        "type": "video",
+        "src": "https://res.cloudinary.com/dbtvcirbp/video/upload/v1773677513/FROZEN_2_pesxil.mp4"
       }
     ],
     "prices": [
@@ -48,8 +52,8 @@
       { "quantity": 50, "price": 320 },
       { "quantity": 100, "price": 600 },
       { "quantity": 200, "price": 1120 },
-      { "quantity": 500, "price": 2750 },
-      { "quantity": 1000, "price": 5200 }
+      { "quantity": 500, "price": 2600 },
+      { "quantity": 1000, "price": 5000 }
     ]
   },
   
