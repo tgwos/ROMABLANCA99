@@ -11,11 +11,11 @@
       },
       {
         "type": "video",
-        "src": "https://res.cloudinary.com/dbyvkhuds/video/upload/v1772272723/2_ihfu8l.mp4"
+        "src": "https://videodelivery.net/5655ac9d2c44e982153f69b8869af0ba/manifest/video.m3u8"
       },
       {
         "type": "video",
-        "src": "https://res.cloudinary.com/dbyvkhuds/video/upload/v1772542774/IMG_1712_fchvvf.mp4"
+        "src": "https://videodelivery.net/f0e39632f079a01e67677ed9d3b8bea5/manifest/video.m3u8"
       }
     ],
     "prices": [
@@ -40,11 +40,11 @@
       },
       {
         "type": "video",
-        "src": "https://res.cloudinary.com/dbtvcirbp/video/upload/v1773677514/FROZEN_1_ucgf94.mp4"
+        "src": "https://videodelivery.net/b1ee9dc2af2d5f4364c39a5041741f2e/manifest/video.m3u8"
       },
        {
         "type": "video",
-        "src": "https://res.cloudinary.com/dbtvcirbp/video/upload/v1773677513/FROZEN_2_pesxil.mp4"
+        "src": "https://videodelivery.net/279fa36a4e43174ef80520a733aebf35/manifest/video.m3u8"
       }
     ],
     "prices": [
@@ -115,19 +115,11 @@
     },
     {
       "type": "video",
-      "src": "https://ik.imagekit.io/lao1bkp97/New%20Folder/3%20-%20Trim.mp4"
+      "src": "https://videodelivery.net/d869b0831cc1cf4f6a20007a55210b2e/manifest/video.m3u8"
     },
     {
       "type": "video",
-      "src": "https://ik.imagekit.io/lao1bkp97/New%20Folder/2%20-%20Trim.mp4"
-    },
-    {
-      "type": "video",
-      "src": "https://res.cloudinary.com/dbtvcirbp/video/upload/v1773677078/cali_usa_2_lpqwog.mp4"
-    },
-    {
-      "type": "video",
-      "src": "https://res.cloudinary.com/dbtvcirbp/video/upload/v1773677078/cali_usa_hmoqtu.mp4"
+      "src": "https://videodelivery.net/07429ee06f718c62472f5270dfefdc85/manifest/video.m3u8"
     }
     ],
     "prices": [
