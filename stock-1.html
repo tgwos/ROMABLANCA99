@@ -213,7 +213,7 @@ body{
 </div>
 
 <div class="modal" id="modal">
-  <div class="media-box">
+  <div class="media-box" id="mediaBox">
     <div class="nav left" id="prev">‹</div>
     <div class="nav right" id="next">›</div>
     <div id="mediaContainer"></div>
@@ -234,7 +234,9 @@ let products = [];
 let product = null;
 let mediaIndex = 0;
 let currentVideo = null;
+let isChanging = false;
 
+/* FETCH */
 fetch("products.json?v=" + Date.now())
 .then(r => r.json())
 .then(j => {
@@ -265,10 +267,12 @@ function openModal(p){
   tg.BackButton.show();
 }
 
+/* 🔥 FIX VIDEO */
 function stopCurrentVideo(){
   if(currentVideo){
     currentVideo.pause();
-    currentVideo.currentTime = 0;
+    currentVideo.src = "";
+    currentVideo.load();
     currentVideo = null;
   }
 }
@@ -296,8 +300,12 @@ function loadMedia(){
     v.src = m.src;
     v.controls = true;
     v.playsInline = true;
+    v.muted = true;
+    v.preload = "auto";
+
     box.appendChild(v);
     currentVideo = v;
+
     v.play().catch(()=>{});
   } else {
     const img = document.createElement("img");
@@ -309,16 +317,79 @@ function loadMedia(){
   preloadNext();
 }
 
+/* 🔥 FIX CLICK */
 document.getElementById("next").onclick = () => {
+  if(isChanging) return;
+  isChanging = true;
+
   mediaIndex = (mediaIndex + 1) % product.media.length;
   loadMedia();
+
+  setTimeout(() => isChanging = false, 250);
 };
 
 document.getElementById("prev").onclick = () => {
+  if(isChanging) return;
+  isChanging = true;
+
   mediaIndex = (mediaIndex - 1 + product.media.length) % product.media.length;
   loadMedia();
+
+  setTimeout(() => isChanging = false, 250);
 };
 
+/* 🔥 SWIPE */
+let startX = 0;
+let startY = 0;
+let isTouching = false;
+
+const swipeBox = document.getElementById("mediaBox");
+
+swipeBox.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+  startY = e.touches[0].clientY;
+  isTouching = true;
+});
+
+swipeBox.addEventListener("touchend", e => {
+  if(!isTouching) return;
+
+  const dx = e.changedTouches[0].clientX - startX;
+  const dy = e.changedTouches[0].clientY - startY;
+
+  handleSwipe(dx, dy);
+  isTouching = false;
+});
+
+swipeBox.addEventListener("mousedown", e => {
+  startX = e.clientX;
+  startY = e.clientY;
+  isTouching = true;
+});
+
+swipeBox.addEventListener("mouseup", e => {
+  if(!isTouching) return;
+
+  const dx = e.clientX - startX;
+  const dy = e.clientY - startY;
+
+  handleSwipe(dx, dy);
+  isTouching = false;
+});
+
+function handleSwipe(dx, dy){
+  const threshold = 50;
+
+  if(Math.abs(dx) > Math.abs(dy)){
+    if(dx > threshold){
+      document.getElementById("prev").click();
+    } else if(dx < -threshold){
+      document.getElementById("next").click();
+    }
+  }
+}
+
+/* RESTO */
 function loadPrices(){
   const box = document.getElementById("prices");
   box.innerHTML = "";
