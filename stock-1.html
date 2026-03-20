@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
@@ -139,7 +139,7 @@ body{
   object-fit:contain;
 }
 
-/* ARROWS */
+/* 🔥 FIX: frecce sopra il video */
 .nav{
   position:absolute;
   top:50%;
@@ -158,6 +158,7 @@ body{
   color:var(--gold-light);
   border:3px double var(--gold);
   box-shadow:0 0 12px rgba(212,175,55,.4);
+  z-index:9999; /* 🔥 IMPORTANTISSIMO */
 }
 
 .nav.left{ left:10px; }
@@ -213,7 +214,7 @@ body{
 </div>
 
 <div class="modal" id="modal">
-  <div class="media-box" id="mediaBox">
+  <div class="media-box">
     <div class="nav left" id="prev">‹</div>
     <div class="nav right" id="next">›</div>
     <div id="mediaContainer"></div>
@@ -234,7 +235,6 @@ let products = [];
 let product = null;
 let mediaIndex = 0;
 let currentVideo = null;
-let isChanging = false;
 
 /* FETCH */
 fetch("products.json?v=" + Date.now())
@@ -277,16 +277,6 @@ function stopCurrentVideo(){
   }
 }
 
-function preloadNext(){
-  if(!product || !product.media) return;
-  const nextIndex = (mediaIndex + 1) % product.media.length;
-  const next = product.media[nextIndex];
-  if(next.type === "image"){
-    const img = new Image();
-    img.src = next.src;
-  }
-}
-
 function loadMedia(){
   stopCurrentVideo();
   const box = document.getElementById("mediaContainer");
@@ -303,6 +293,9 @@ function loadMedia(){
     v.muted = true;
     v.preload = "auto";
 
+    /* 🔥 FIX BLOCCO CLICK */
+    v.style.pointerEvents = "none";
+
     box.appendChild(v);
     currentVideo = v;
 
@@ -313,83 +306,19 @@ function loadMedia(){
     img.loading = "lazy";
     box.appendChild(img);
   }
-
-  preloadNext();
 }
 
-/* 🔥 FIX CLICK */
+/* NAV */
 document.getElementById("next").onclick = () => {
-  if(isChanging) return;
-  isChanging = true;
-
   mediaIndex = (mediaIndex + 1) % product.media.length;
   loadMedia();
-
-  setTimeout(() => isChanging = false, 250);
 };
 
 document.getElementById("prev").onclick = () => {
-  if(isChanging) return;
-  isChanging = true;
-
   mediaIndex = (mediaIndex - 1 + product.media.length) % product.media.length;
   loadMedia();
-
-  setTimeout(() => isChanging = false, 250);
 };
 
-/* 🔥 SWIPE */
-let startX = 0;
-let startY = 0;
-let isTouching = false;
-
-const swipeBox = document.getElementById("mediaBox");
-
-swipeBox.addEventListener("touchstart", e => {
-  startX = e.touches[0].clientX;
-  startY = e.touches[0].clientY;
-  isTouching = true;
-});
-
-swipeBox.addEventListener("touchend", e => {
-  if(!isTouching) return;
-
-  const dx = e.changedTouches[0].clientX - startX;
-  const dy = e.changedTouches[0].clientY - startY;
-
-  handleSwipe(dx, dy);
-  isTouching = false;
-});
-
-swipeBox.addEventListener("mousedown", e => {
-  startX = e.clientX;
-  startY = e.clientY;
-  isTouching = true;
-});
-
-swipeBox.addEventListener("mouseup", e => {
-  if(!isTouching) return;
-
-  const dx = e.clientX - startX;
-  const dy = e.clientY - startY;
-
-  handleSwipe(dx, dy);
-  isTouching = false;
-});
-
-function handleSwipe(dx, dy){
-  const threshold = 50;
-
-  if(Math.abs(dx) > Math.abs(dy)){
-    if(dx > threshold){
-      document.getElementById("prev").click();
-    } else if(dx < -threshold){
-      document.getElementById("next").click();
-    }
-  }
-}
-
-/* RESTO */
 function loadPrices(){
   const box = document.getElementById("prices");
   box.innerHTML = "";
