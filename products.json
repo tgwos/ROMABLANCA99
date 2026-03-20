@@ -74,7 +74,12 @@
       {
         "type": "video",
         "src": "https://res.cloudinary.com/dbtvcirbp/video/upload/v1773677078/dry_gm15mw.mp4"
+      },
+      {
+        "type": "video",
+        "src": "https://res.cloudinary.com/dbtvcirbp/video/upload/v1773677078/dry_gm15mw.mp4"
       }
+      
     ],
     "prices": [
       { "quantity": 25, "price": 140 },
