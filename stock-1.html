@@ -124,19 +124,11 @@ body{
   z-index:2000;
 }
 
-/* 🔥 WRAPPER NUOVO */
-.media-wrapper{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  max-width:420px;
-  margin:20px auto 0;
-}
-
 /* MEDIA */
 .media-box{
-  flex:1;
+  width:100%;
+  max-width:420px;
+  margin:20px auto 0;
   position:relative;
 }
 
@@ -147,21 +139,30 @@ body{
   object-fit:contain;
 }
 
-/* 🔥 BOTTONI FUORI */
+/* ARROWS */
 .nav{
-  width:50px;
-  height:50px;
+  position:fixed;
+  top:40vh; /* centrato rispetto al video */
+  transform:translateY(-50%);
+  width:54px;
+  height:54px;
   background:var(--blue-deep);
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:26px;
+  font-size:28px;
   font-weight:900;
   cursor:pointer;
+  user-select:none;
   color:var(--gold-light);
   border:3px double var(--gold);
+  box-shadow:0 0 12px rgba(212,175,55,.4);
+  z-index:3000;
 }
+
+.nav.left{ left:10px; }
+.nav.right{ right:10px; }
 
 /* PRICES */
 .prices{
@@ -183,6 +184,7 @@ body{
   text-align:center;
   font-weight:800;
   border:3px double var(--gold);
+  box-shadow:0 0 12px rgba(212,175,55,.25);
 }
 
 /* CONTACT */
@@ -199,6 +201,7 @@ body{
   font-weight:900;
   text-align:center;
   cursor:pointer;
+  letter-spacing:2px;
 }
 </style>
 </head>
@@ -212,15 +215,11 @@ body{
 
 <div class="modal" id="modal">
 
-  <!-- 🔥 STRUTTURA NUOVA -->
-  <div class="media-wrapper">
-    <div class="nav" id="prev">‹</div>
+  <div class="nav left" id="prev">‹</div>
+  <div class="nav right" id="next">›</div>
 
-    <div class="media-box">
-      <div id="mediaContainer"></div>
-    </div>
-
-    <div class="nav" id="next">›</div>
+  <div class="media-box">
+    <div id="mediaContainer"></div>
   </div>
 
   <div class="prices" id="prices"></div>
@@ -232,6 +231,9 @@ const tg = window.Telegram.WebApp;
 tg.ready();
 tg.expand();
 
+const CATEGORY = "stock1";
+const CONTACT = "rafacaroquintero93";
+
 let products = [];
 let product = null;
 let mediaIndex = 0;
@@ -240,7 +242,7 @@ let currentVideo = null;
 fetch("products.json?v=" + Date.now())
 .then(r => r.json())
 .then(j => {
-  products = j;
+  products = j.filter(p => p.category === CATEGORY);
   render();
 });
 
@@ -251,8 +253,8 @@ function render(){
     const d = document.createElement("div");
     d.className = "product";
     d.innerHTML =
-      '<div class="product-card"><img src="'+p.previewImage+'"></div>'+
-      '<div class="name">'+p.name+'</div>';
+      '<div class="product-card"><img loading="lazy" src="' + p.previewImage + '"></div>' +
+      '<div class="name">' + p.name + '</div>';
     d.onclick = () => openModal(p);
     box.appendChild(d);
   });
@@ -263,22 +265,33 @@ function openModal(p){
   mediaIndex = 0;
   document.getElementById("modal").style.display = "flex";
   loadMedia();
+  loadPrices();
+  tg.BackButton.show();
 }
 
-function stopVideo(){
+function stopCurrentVideo(){
   if(currentVideo){
     currentVideo.pause();
-    currentVideo.src = "";
-    currentVideo.load();
+    currentVideo.currentTime = 0;
     currentVideo = null;
   }
 }
 
-function loadMedia(){
-  stopVideo();
+function preloadNext(){
+  if(!product || !product.media) return;
+  const nextIndex = (mediaIndex + 1) % product.media.length;
+  const next = product.media[nextIndex];
+  if(next.type === "image"){
+    const img = new Image();
+    img.src = next.src;
+  }
+}
 
+function loadMedia(){
+  stopCurrentVideo();
   const box = document.getElementById("mediaContainer");
   box.innerHTML = "";
+  if(!product.media) return;
 
   const m = product.media[mediaIndex];
 
@@ -287,15 +300,17 @@ function loadMedia(){
     v.src = m.src;
     v.controls = true;
     v.playsInline = true;
-    v.muted = true;
     box.appendChild(v);
     currentVideo = v;
     v.play().catch(()=>{});
   } else {
     const img = document.createElement("img");
     img.src = m.src;
+    img.loading = "lazy";
     box.appendChild(img);
   }
+
+  preloadNext();
 }
 
 document.getElementById("next").onclick = () => {
@@ -307,6 +322,41 @@ document.getElementById("prev").onclick = () => {
   mediaIndex = (mediaIndex - 1 + product.media.length) % product.media.length;
   loadMedia();
 };
+
+function loadPrices(){
+  const box = document.getElementById("prices");
+  box.innerHTML = "";
+  product.prices.forEach(p => {
+    const d = document.createElement("div");
+    d.className = "price";
+    d.innerHTML = p.quantity + " g<br><strong>€" + p.price + "</strong>";
+    box.appendChild(d);
+  });
+}
+
+document.getElementById("contactBtn").onclick = () => {
+  const msg = encodeURIComponent("Ciao, sono interessato al prodotto: " + product.name);
+  window.open("https://t.me/" + CONTACT + "?text=" + msg, "_blank");
+};
+
+function closeModal(){
+  stopCurrentVideo();
+  document.getElementById("modal").style.display = "none";
+  document.getElementById("mediaContainer").innerHTML = "";
+  tg.BackButton.hide();
+}
+
+document.getElementById("backBtn").onclick = () => {
+  document.getElementById("modal").style.display === "flex"
+    ? closeModal()
+    : location.href = "catalog.html";
+};
+
+tg.BackButton.onClick(() => {
+  document.getElementById("modal").style.display === "flex"
+    ? closeModal()
+    : location.href = "catalog.html";
+});
 </script>
 </body>
 </html>
