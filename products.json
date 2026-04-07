@@ -64,14 +64,6 @@
     "previewImage": "https://res.cloudinary.com/dbtvcirbp/image/upload/v1773677859/DRY_ROMA_BLANCA_bt7n26.png",
     "media": [
       {
-        "type": "image",
-        "src": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771419436/4.2_bnqhlz.jpg"
-      },
-      {
-        "type": "image",
-        "src": "https://res.cloudinary.com/dizbl4jib/image/upload/v1771419394/4_opsaax.jpg"
-      },
-      {
         "type": "video",
         "src": "https://videodelivery.net/29809ae812617a9feb537ab99126f694/manifest/video.m3u8"
       },
