@@ -34,17 +34,9 @@
     "category": "stock3",
     "previewImage": "https://res.cloudinary.com/dbtvcirbp/image/upload/v1773677859/FROZEN_1_ANTEPRIMA_y79bn2.png",
     "media": [
-      {
-        "type": "image",
-        "src": "https://res.cloudinary.com/dbyvkhuds/image/upload/v1772273596/1_grflfw.png"
-      },
-      {
-        "type": "video",
-        "src": "https://videodelivery.net/b1ee9dc2af2d5f4364c39a5041741f2e/manifest/video.m3u8"
-      },
        {
         "type": "video",
-        "src": "https://videodelivery.net/279fa36a4e43174ef80520a733aebf35/manifest/video.m3u8"
+        "src": "https://videodelivery.net/77d9b23d695b8050b1e6cd2b48664fb9/manifest/video.m3u8"
       }
     ],
     "prices": [
