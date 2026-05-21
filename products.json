@@ -16,6 +16,10 @@
       {
         "type": "video",
         "src": "https://videodelivery.net/f0e39632f079a01e67677ed9d3b8bea5/manifest/video.m3u8"
+      },
+      {
+        "type": "video",
+        "src": "https://videodelivery.net/c4d1928554c8b8bd300638060fa917d7/manifest/video.m3u8"
       }
     ],
     "prices": [
@@ -62,8 +66,15 @@
       {
         "type": "video",
         "src": "https://videodelivery.net/e454cf955cc819a948aee325f8c9fcda/manifest/video.m3u8"
+      },
+      {
+        "type": "video",
+        "src": "https://videodelivery.net/399c4b337b06fd068e6784cc93c1e9de/manifest/video.m3u8"
+      },
+      {
+        "type": "video",
+        "src": "https://videodelivery.net/7925f12993b65876328c42a86a328eb6/manifest/video.m3u8"
       }
-      
     ],
     "prices": [
       { "quantity": 25, "price": 140 },
