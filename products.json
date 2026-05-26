@@ -3,23 +3,15 @@
     "id": 1,
     "name": "ESCLUSIVA",
     "category": "stock1",
-    "previewImage": "https://res.cloudinary.com/dbyvkhuds/image/upload/v1772272718/1_vo52gv.jpg",
+    "previewImage": "https://imagedelivery.net/NDmb7wdAt1NpzNsXB7Yxlw/9929702e-9ff6-47f2-a91e-dfb9669aa300/public",
     "media": [
       {
         "type": "image",
-        "src": "https://res.cloudinary.com/dbyvkhuds/image/upload/v1772272718/1_vo52gv.jpg"
+        "src": "https://imagedelivery.net/NDmb7wdAt1NpzNsXB7Yxlw/9929702e-9ff6-47f2-a91e-dfb9669aa300/public"
       },
       {
         "type": "video",
-        "src": "https://videodelivery.net/5655ac9d2c44e982153f69b8869af0ba/manifest/video.m3u8"
-      },
-      {
-        "type": "video",
-        "src": "https://videodelivery.net/f0e39632f079a01e67677ed9d3b8bea5/manifest/video.m3u8"
-      },
-      {
-        "type": "video",
-        "src": "https://videodelivery.net/c4d1928554c8b8bd300638060fa917d7/manifest/video.m3u8"
+        "src": "https://videodelivery.net/7778a3d5747ea03dabb9c15e07161098/manifest/video.m3u8"
       }
     ],
     "prices": [
@@ -36,11 +28,11 @@
     "id": 2,
     "name": "FROZEN MOE FARM",
     "category": "stock3",
-    "previewImage": "https://imagedelivery.net/NDmb7wdAt1NpzNsXB7Yxlw/103dad1a-b72f-46e3-205f-88b17bddb600/public",
+    "previewImage": "https://imagedelivery.net/NDmb7wdAt1NpzNsXB7Yxlw/04cceddf-f6fc-4736-3cd1-cc75d17c0c00/public",
     "media": [
        {
         "type": "video",
-        "src": "https://videodelivery.net/77d9b23d695b8050b1e6cd2b48664fb9/manifest/video.m3u8"
+        "src": "https://videodelivery.net/1888c70ecdb69ec103af7c55645c703d/manifest/video.m3u8"
       }
     ],
     "prices": [
@@ -90,31 +82,15 @@
     "id": 4,
     "name": "ERBA CALI USA",
     "category": "stock4",
-    "previewImage": "https://res.cloudinary.com/dbtvcirbp/image/upload/v1773677954/CALI_USA_1_V_pasmub.png",
+    "previewImage": "https://imagedelivery.net/NDmb7wdAt1NpzNsXB7Yxlw/9a543260-9caf-4012-e61c-3ee232fb0b00/public",
     "media": [
       {
       "type": "image",
-      "src": "https://ik.imagekit.io/lao1bkp97/New%20Folder/1.jpg"
-    },
-    {
-      "type": "image",
-      "src": "https://ik.imagekit.io/lao1bkp97/New%20Folder/4.jpg"
-    },
-    {
-      "type": "image",
-      "src": "https://res.cloudinary.com/dbyvkhuds/image/upload/v1772273967/1_ub4xsc.jpg"
-    },
-    {
-      "type": "image",
-      "src": "https://res.cloudinary.com/dbyvkhuds/image/upload/v1772273971/2_iwut5l.jpg"
+      "src": "https://imagedelivery.net/NDmb7wdAt1NpzNsXB7Yxlw/9a543260-9caf-4012-e61c-3ee232fb0b00/public"
     },
     {
       "type": "video",
-      "src": "https://videodelivery.net/d869b0831cc1cf4f6a20007a55210b2e/manifest/video.m3u8"
-    },
-    {
-      "type": "video",
-      "src": "https://videodelivery.net/07429ee06f718c62472f5270dfefdc85/manifest/video.m3u8"
+      "src": "https://videodelivery.net/20648e0aaf9fd62ed46c97f2a0061f50/manifest/video.m3u8"
     }
     ],
     "prices": [
